@@ -1,13 +1,15 @@
 "use client";
 
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { SUIT, RANK } from "@/types/pocker-card";
 import { FaHeart } from "react-icons/fa";
 import { GiClubs } from "react-icons/gi";
 import { FaDiamond } from "react-icons/fa6";
 import { BsSuitSpadeFill } from "react-icons/bs";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import BackFace from "@/public/back-face.png";
 
 const ICON_BY_SUIT: Record<SUIT, ReactNode> = {
   [SUIT.CLUB]: <GiClubs />,
@@ -42,14 +44,23 @@ const TEXT_BY_RANK: Record<RANK, string> = {
 type Props = {
   suit: SUIT;
   rank: RANK;
+  flip?: boolean;
 };
 
-export const PockerCard = ({ suit, rank }: Props) => {
+export const PokerCard = ({ suit, rank, flip = false }: Props) => {
+  if (flip)
+    return (
+      <Image
+        className="aspect-[4/6] w-[150px]"
+        alt="back face of poker card"
+        src={BackFace.src}
+        width={BackFace.width}
+        height={BackFace.height}
+      />
+    );
   return (
-    <motion.div className="aspect-[4/6] w-[150px] p-2 rounded-md flex flex-col justify-center items-center gap-1 border border-gray-200 relative shadow-md">
-      <div
-        className={cn(COLOR_BY_SUIT[suit], "text-4xl absolute top-2 left-2")}
-      >
+    <motion.div className="aspect-[4/6] box-border w-[150px] shadow-md relative p-2 rounded-md flex flex-col justify-center items-center gap-1 border border-gray-200">
+      <div className={cn(COLOR_BY_SUIT[suit], "text-4xl top-2 left-2")}>
         {TEXT_BY_RANK[rank]}
       </div>
       <div className={cn(COLOR_BY_SUIT[suit], "text-6xl")}>
