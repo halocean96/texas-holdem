@@ -51,7 +51,7 @@ export const PokerCard = ({ suit, rank, flip = false }: Props) => {
   if (flip)
     return (
       <Image
-        className="aspect-[4/6] w-[150px]"
+        className="aspect-[4/6] w-[150px] bg-white rounded-md shadow-md border border-gray-200"
         alt="back face of poker card"
         src={BackFace.src}
         width={BackFace.width}
