@@ -20,3 +20,8 @@ export enum RANK {
   QUEEN,
   KING,
 }
+
+export type Card = {
+  suit: SUIT;
+  rank: RANK;
+};

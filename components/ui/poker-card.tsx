@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { SUIT, RANK } from "@/types/pocker-card";
+import { SUIT, RANK, Card } from "@/types/pocker-card";
 import { FaHeart } from "react-icons/fa";
 import { GiClubs } from "react-icons/gi";
 import { FaDiamond } from "react-icons/fa6";
@@ -41,11 +41,7 @@ const TEXT_BY_RANK: Record<RANK, string> = {
   [RANK.KING]: "K",
 };
 
-type Props = {
-  suit: SUIT;
-  rank: RANK;
-  flip?: boolean;
-};
+type Props = Card & { flip?: boolean };
 
 export const PokerCard = ({ suit, rank, flip = false }: Props) => {
   if (flip)
