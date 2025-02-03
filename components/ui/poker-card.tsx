@@ -55,8 +55,10 @@ export const PokerCard = ({ suit, rank, flip = false }: Props) => {
       />
     );
   return (
-    <motion.div className="aspect-[4/6] box-border w-[150px] shadow-md relative p-2 rounded-md flex flex-col justify-center items-center gap-1 border border-gray-200">
-      <div className={cn(COLOR_BY_SUIT[suit], "text-4xl top-2 left-2")}>
+    <motion.div className="aspect-[4/6] box-border w-[150px] shadow-md relative p-2 rounded-md flex flex-col justify-center items-center gap-1 border border-gray-200 relative">
+      <div
+        className={cn(COLOR_BY_SUIT[suit], "text-4xl top-2 left-2 absolute")}
+      >
         {TEXT_BY_RANK[rank]}
       </div>
       <div className={cn(COLOR_BY_SUIT[suit], "text-6xl")}>

@@ -1,3 +1,5 @@
+import { Card } from "./pocker-card";
+
 export enum HAND_RANKING {
   ROYAL_FLUSH,
   STRAIGHT_FLUSH,
