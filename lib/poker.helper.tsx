@@ -1,4 +1,4 @@
-import { Card, RANK } from "@/types/pocker-card";
+import { Card } from "@/types/pocker-card";
 import { AceFirstOrderList, AceLastOrderList } from "@/constants/poker";
 
 export const sortCardByRank = (hand: Card[]) => {
@@ -11,6 +11,5 @@ export const sortCardByRank = (hand: Card[]) => {
     (a, b) =>
       AceLastOrderList.indexOf(a.rank) - AceLastOrderList.indexOf(b.rank)
   );
-  console.log({ aceFirstSorted, aceLastSorted });
   return [aceFirstSorted, aceLastSorted];
 };

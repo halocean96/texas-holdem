@@ -1,5 +1,3 @@
-import { Card } from "./pocker-card";
-
 export enum HAND_RANKING {
   ROYAL_FLUSH,
   STRAIGHT_FLUSH,
@@ -12,8 +10,3 @@ export enum HAND_RANKING {
   ONE_PAIR,
   HIGH_CARD,
 }
-
-export type EstimationOfHandRanking = {
-  ranking: HAND_RANKING;
-  value: number;
-};
