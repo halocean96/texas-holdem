@@ -1,24 +1,24 @@
 export enum SUIT {
-  CLUB,
-  DIAMOND,
-  HEART,
-  SPADE,
+  CLUB = "CLUB",
+  DIAMOND = "DIAMOND",
+  HEART = "HEART",
+  SPADE = "SPADE",
 }
 
 export enum RANK {
-  ACE,
-  TWO,
-  THREE,
-  FOUR,
-  FIVE,
-  SIX,
-  SEVEN,
-  EIGHT,
-  NINE,
-  TEN,
-  JACK,
-  QUEEN,
-  KING,
+  ACE = "ACE",
+  TWO = "TWO",
+  THREE = "THREE",
+  FOUR = "FOUR",
+  FIVE = "FIVE",
+  SIX = "SIX",
+  SEVEN = "SEVEN",
+  EIGHT = "EIGHT",
+  NINE = "NINE",
+  TEN = "TEN",
+  JACK = "JACK",
+  QUEEN = "QUEEN",
+  KING = "KING",
 }
 
 export type Card = {
