@@ -50,7 +50,21 @@ export const getTwoPair = (hand: Card[]): Card[] => {
 };
 
 export const getThreeOfAKind = (hand: Card[]): Card[] => {
-  return [];
+  const rankCountMap = new Map<RANK, number>();
+  hand.forEach((card) => {
+    const count = rankCountMap.get(card.rank) ?? 0;
+    rankCountMap.set(card.rank, count + 1);
+  });
+  const threeOfAKindCardList = Array.from(rankCountMap.entries()).filter(
+    ([_rank, count]) => count === 3
+  );
+  if (isEmpty(threeOfAKindCardList)) return [];
+
+  const threeOfAKindCardRank = max(threeOfAKindCardList, ([rank]) =>
+    AceLastOrderList.indexOf(rank)
+  );
+  if (threeOfAKindCardRank === null) return [];
+  return hand.filter((card) => card.rank === threeOfAKindCardRank[0]);
 };
 
 export const getStraight = (hand: Card[]): Card[] => {

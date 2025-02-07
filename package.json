@@ -12,8 +12,10 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^1.1.9",
     "@radix-ui/react-slot": "^1.1.1",
     "@types/canvas-confetti": "^1.9.0",
+    "ai": "^4.1.25",
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -25,7 +27,8 @@
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",

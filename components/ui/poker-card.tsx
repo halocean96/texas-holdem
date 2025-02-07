@@ -20,9 +20,9 @@ const ICON_BY_SUIT: Record<SUIT, ReactNode> = {
 
 const COLOR_BY_SUIT: Record<SUIT, string> = {
   [SUIT.CLUB]: "text-black",
+  [SUIT.SPADE]: "text-black",
   [SUIT.DIAMOND]: "text-red-500",
   [SUIT.HEART]: "text-red-500",
-  [SUIT.SPADE]: "text-black",
 };
 
 const TEXT_BY_RANK: Record<RANK, string> = {
@@ -43,6 +43,8 @@ const TEXT_BY_RANK: Record<RANK, string> = {
 
 type Props = Card & { flip?: boolean };
 
+// suit: 다이아, 하트, 클로버, 스페이드
+// rank: A, 2 ,3 ~~~ 10, J, Q, K
 export const PokerCard = ({ suit, rank, flip = false }: Props) => {
   if (flip)
     return (
@@ -55,7 +57,7 @@ export const PokerCard = ({ suit, rank, flip = false }: Props) => {
       />
     );
   return (
-    <motion.div className="aspect-[4/6] box-border w-[150px] shadow-md relative p-2 rounded-md flex flex-col justify-center items-center gap-1 border border-gray-200 relative">
+    <motion.div className="aspect-[4/6] box-border w-[150px] shadow-md p-2 rounded-md flex flex-col justify-center items-center gap-1 border border-gray-200 relative">
       <div
         className={cn(COLOR_BY_SUIT[suit], "text-4xl top-2 left-2 absolute")}
       >

@@ -60,7 +60,7 @@ describe("poker", () => {
     });
   });
 
-  describe.skip("getThreeOfAKind", () => {
+  describe("getThreeOfAKind", () => {
     test("should return three of a kind ranking", () => {
       const result = getThreeOfAKind(cardListForThreeOfAKind);
       expect(isEmpty(result)).toBeFalsy();
