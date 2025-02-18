@@ -1,6 +1,5 @@
 "use client";
 
-import { Card, RANK, SUIT } from "@/types/pocker-card";
 import Image, { StaticImageData } from "next/image";
 import BackFace from "@/public/Suit=Other, Number=Back Red.png";
 import ClubsTwo from "@/public/Suit=Clubs, Number=2.png";
@@ -56,73 +55,80 @@ import HeartsQueen from "@/public/Suit=Hearts, Number=Queen.png";
 import HeartsKing from "@/public/Suit=Hearts, Number=King.png";
 import HeartsAce from "@/public/Suit=Hearts, Number=Ace.png";
 
-const CardImageBySuitAndRank: Record<SUIT, Record<RANK, StaticImageData>> = {
-  [SUIT.CLUB]: {
-    [RANK.TWO]: ClubsTwo,
-    [RANK.THREE]: ClubsThree,
-    [RANK.FOUR]: ClubsFour,
-    [RANK.FIVE]: ClubsFive,
-    [RANK.SIX]: ClubsSix,
-    [RANK.SEVEN]: ClubsSeven,
-    [RANK.EIGHT]: ClubsEight,
-    [RANK.NINE]: ClubsNine,
-    [RANK.TEN]: ClubsTen,
-    [RANK.JACK]: ClubsJack,
-    [RANK.QUEEN]: ClubsQueen,
-    [RANK.KING]: ClubsKing,
-    [RANK.ACE]: ClubsAce,
+const CardImageBySuitAndRank: Record<
+  string,
+  Record<string, StaticImageData>
+> = {
+  c: {
+    2: ClubsTwo,
+    3: ClubsThree,
+    4: ClubsFour,
+    5: ClubsFive,
+    6: ClubsSix,
+    7: ClubsSeven,
+    8: ClubsEight,
+    9: ClubsNine,
+    T: ClubsTen,
+    J: ClubsJack,
+    Q: ClubsQueen,
+    K: ClubsKing,
+    A: ClubsAce,
   },
-  [SUIT.DIAMOND]: {
-    [RANK.TWO]: DiamondsTwo,
-    [RANK.THREE]: DiamondsThree,
-    [RANK.FOUR]: DiamondsFour,
-    [RANK.FIVE]: DiamondsFive,
-    [RANK.SIX]: DiamondsSix,
-    [RANK.SEVEN]: DiamondsSeven,
-    [RANK.EIGHT]: DiamondsEight,
-    [RANK.NINE]: DiamondsNine,
-    [RANK.TEN]: DiamondsTen,
-    [RANK.JACK]: DiamondsJack,
-    [RANK.QUEEN]: DiamondsQueen,
-    [RANK.KING]: DiamondsKing,
-    [RANK.ACE]: DiamondsAce,
+  d: {
+    2: DiamondsTwo,
+    3: DiamondsThree,
+    4: DiamondsFour,
+    5: DiamondsFive,
+    6: DiamondsSix,
+    7: DiamondsSeven,
+    8: DiamondsEight,
+    9: DiamondsNine,
+    T: DiamondsTen,
+    J: DiamondsJack,
+    Q: DiamondsQueen,
+    K: DiamondsKing,
+    A: DiamondsAce,
   },
-  [SUIT.SPADE]: {
-    [RANK.TWO]: SpadesTwo,
-    [RANK.THREE]: SpadesThree,
-    [RANK.FOUR]: SpadesFour,
-    [RANK.FIVE]: SpadesFive,
-    [RANK.SIX]: SpadesSix,
-    [RANK.SEVEN]: SpadesSeven,
-    [RANK.EIGHT]: SpadesEight,
-    [RANK.NINE]: SpadesNine,
-    [RANK.TEN]: SpadesTen,
-    [RANK.JACK]: SpadesJack,
-    [RANK.QUEEN]: SpadesQueen,
-    [RANK.KING]: SpadesKing,
-    [RANK.ACE]: SpadesAce,
+  s: {
+    2: SpadesTwo,
+    3: SpadesThree,
+    4: SpadesFour,
+    5: SpadesFive,
+    6: SpadesSix,
+    7: SpadesSeven,
+    8: SpadesEight,
+    9: SpadesNine,
+    T: SpadesTen,
+    J: SpadesJack,
+    Q: SpadesQueen,
+    K: SpadesKing,
+    A: SpadesAce,
   },
-  [SUIT.HEART]: {
-    [RANK.TWO]: HeartsTwo,
-    [RANK.THREE]: HeartsThree,
-    [RANK.FOUR]: HeartsFour,
-    [RANK.FIVE]: HeartsFive,
-    [RANK.SIX]: HeartsSix,
-    [RANK.SEVEN]: HeartsSeven,
-    [RANK.EIGHT]: HeartsEight,
-    [RANK.NINE]: HeartsNine,
-    [RANK.TEN]: HeartsTen,
-    [RANK.JACK]: HeartsJack,
-    [RANK.QUEEN]: HeartsQueen,
-    [RANK.KING]: HeartsKing,
-    [RANK.ACE]: HeartsAce,
+  h: {
+    2: HeartsTwo,
+    3: HeartsThree,
+    4: HeartsFour,
+    5: HeartsFive,
+    6: HeartsSix,
+    7: HeartsSeven,
+    8: HeartsEight,
+    9: HeartsNine,
+    T: HeartsTen,
+    J: HeartsJack,
+    Q: HeartsQueen,
+    K: HeartsKing,
+    A: HeartsAce,
   },
 };
 
-type Props = Card & { flip?: boolean };
+type Props = { card: string; flip?: boolean };
 
-export const PokerCard = ({ suit, rank, flip = false }: Props) => {
-  const CardImage = CardImageBySuitAndRank[suit][rank];
+export const PokerCard = ({ card, flip = false }: Props) => {
+  const [rank, suit] = card.split("");
+  const CardImage = CardImageBySuitAndRank[suit]?.[rank];
+  if (!CardImage) {
+    return null;
+  }
   return (
     <Image
       className="aspect-[4/6] w-[150px]"
